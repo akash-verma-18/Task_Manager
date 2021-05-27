@@ -2,11 +2,14 @@
 let colorBtn = document.querySelectorAll(".filter_color");
 let mainContainer = document.querySelector(".main_container");
 let bothElemArr = document.querySelectorAll(".icon-container");
+
 let crossBtn = bothElemArr[1];
 let plusButton = bothElemArr[0];
 let body = document.body;
 let deleteState = false; // to check the status of delete option
 let taskArr = [];
+let lockState = true;
+
 if (localStorage.getItem("allTask")) { // to get the tasks we created before from localstorage.
     taskArr = JSON.parse(localStorage.getItem("allTask")); // if tasks are already present in localstorage then update the taskArr.
     // UI
@@ -15,15 +18,16 @@ if (localStorage.getItem("allTask")) { // to get the tasks we created before fro
         createTask(color, task, false, id); // false means task is coming from localstorage
     }
 }
-// for(let i=0; i<colorBtn.length; i++){
-//     colorBtn[i].addEventListener("click", function(e){
-//         // classList is giving us class array of .filter-color element and classList[1] is giving us the color.
-//         let color = colorBtn[i].classList[1]; 
-//         mainContainer.style.backgroundColor = color;
-//     })
-// }
+for(let i=0; i<colorBtn.length; i++){
+    colorBtn[i].addEventListener("click", function(e){
+        // classList is giving us class array of .filter-color element and classList[1] is giving us the color.
+        let color = colorBtn[i].classList[1]; 
+        mainContainer.style.backgroundColor = color;
+    })
+}
 plusButton.addEventListener("click", createModal);
 crossBtn.addEventListener("click", setDeleteState);
+
 function createModal() {
     // create modal
     let modalContainer = document.querySelector(".modal_container");
@@ -91,7 +95,8 @@ function createTask(color, task, flag, id) {
     taskContainer.innerHTML = `<div class="task_filter ${color}"></div>
     <div class="task_desc_container">
         <h3 class="uid">#${uid}</h3>
-        <div class="task_desc" contenteditable="true" >${task}</div>
+        <div class="task_desc"  >${task}</div>
+        <div class="lock"><i class="fas fa-lock"></i></div>
     </div>
 </div >`;
     mainContainer.appendChild(taskContainer);
@@ -106,8 +111,24 @@ function createTask(color, task, flag, id) {
     taskFilter.addEventListener("click", changeColor);
     taskContainer.addEventListener("click", deleteTask);
     let taskDesc = taskContainer.querySelector(".task_desc");
-    taskDesc.addEventListener("keypress", editTask);
-
+    let lockBtn = taskContainer.querySelector(".lock");
+    lockBtn.addEventListener("click", function(){
+        let taskDesc = taskContainer.querySelector(".task_desc");
+        lockState = !lockState;
+        if(lockState == true){
+            lockBtn.innerHTML = '';
+            lockBtn.innerHTML = `<i class="fas fa-lock">`;
+            taskDesc.setAttribute("contenteditable", "false");
+        }else{
+            taskDesc.setAttribute("contenteditable", "true");
+            lockBtn.innerHTML = '';
+            lockBtn.innerHTML = `<i class="fas fa-lock-open"></i>`;
+            taskDesc.addEventListener("keydown", editTask);
+        }
+    });
+    // if(lockState == false){
+    //     taskDesc.addEventListener("keypress", editTask);
+    // }
 }
 function changeColor(e) {
     // e.target; -> on which event is occurred.
@@ -148,6 +169,7 @@ function deleteTask(e) {
         }
     }
 }
+
 function editTask(e) { // whatever we edit in the textarea after creating task, it should also reflect in the localstorage.
     let taskDesc = e.currentTarget;
     let uidElem = taskDesc.parentNode.children[0];
