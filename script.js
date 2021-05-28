@@ -8,6 +8,7 @@ let plusButton = bothElemArr[0];
 let body = document.body;
 let deleteState = false; // to check the status of delete option
 let taskArr = [];
+let displayTask = [];
 let lockState = true;
 
 if (localStorage.getItem("allTask")) { // to get the tasks we created before from localstorage.
@@ -17,12 +18,23 @@ if (localStorage.getItem("allTask")) { // to get the tasks we created before fro
         let { id, color, task } = taskArr[i];
         createTask(color, task, false, id); // false means task is coming from localstorage
     }
+}else if(!localStorage.getItem("allTask")){
+    alert("Please add new tasks");
 }
 for(let i=0; i<colorBtn.length; i++){
     colorBtn[i].addEventListener("click", function(e){
-        // classList is giving us class array of .filter-color element and classList[1] is giving us the color.
-        let color = colorBtn[i].classList[1]; 
-        mainContainer.style.backgroundColor = color;
+    // classList is giving us class array of .filter-color element and classList[1] is giving us the color.
+    let cClr = colorBtn[i].classList[1];
+    let taskContainer = document.querySelectorAll(".task_container"); 
+    for (let j = 0; j < taskContainer.length; j++) {
+        let taskFilter = taskContainer[j].children[0]; // get the  task filter of that taskContainer
+        let color = taskFilter.classList[1]; // assign the color of task_filter
+        if(cClr == color){
+            taskContainer[j].style.display = "block";
+        }else{
+            taskContainer[j].style.display = "none";
+        }
+    }
     })
 }
 plusButton.addEventListener("click", createModal);
@@ -89,8 +101,8 @@ function createTask(color, task, flag, id) {
     // color area click-> among colors
     let taskContainer = document.createElement("div");
 
-    let uifn = new ShortUniqueId();
-    let uid = id || uifn(); // for giving unique IDs after creating new task container
+    let uifn = new ShortUniqueId(); // this function is inbuilt in npm for providing universal unique identifiers(UUID).
+    let uid = id || uifn(); // for giving unique IDs after creating new task container or giving old IDs for already created tasks from local storage
     taskContainer.setAttribute("class", "task_container");
     taskContainer.innerHTML = `<div class="task_filter ${color}"></div>
     <div class="task_desc_container">
@@ -105,6 +117,9 @@ function createTask(color, task, flag, id) {
         // console.log(uid);
         let obj = { "task": task, "id": `${uid}`, "color": color };
         taskArr.push(obj);
+        /*A common use of JSON is to exchange data to/from a web server.
+          When sending data to a web server, the data has to be a string.
+          Convert a JavaScript object into a string with JSON.stringify().*/
         let finalArr = JSON.stringify(taskArr);
         localStorage.setItem("allTask", finalArr); // storing the new task in localstorage
     }
@@ -126,9 +141,7 @@ function createTask(color, task, flag, id) {
             taskDesc.addEventListener("keydown", editTask);
         }
     });
-    // if(lockState == false){
-    //     taskDesc.addEventListener("keypress", editTask);
-    // }
+    
 }
 function changeColor(e) {
     // e.target; -> on which event is occurred.
