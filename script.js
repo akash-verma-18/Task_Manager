@@ -16,6 +16,7 @@ if (localStorage.getItem("allTask")) { // to get the tasks we created before fro
     // UI
     for (let i = 0; i < taskArr.length; i++) {
         let { id, color, task } = taskArr[i];
+        // whenever we refresh the page the tasks will be created which were already stored in the local storage.
         createTask(color, task, false, id); // false means task is coming from localstorage
     }
 }else if(!localStorage.getItem("allTask")){
