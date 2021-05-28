@@ -1,8 +1,10 @@
-'use strict';
-let colorBtn = document.querySelectorAll(".filter_color");
+'use strict'; /* The purpose of "use strict" is to indicate that the code should be executed in "strict mode".
+                With strict mode, you can not, for example, use undeclared variables.*/
+
+ let colorBtn = document.querySelectorAll(".filter_color");
 let mainContainer = document.querySelector(".main_container");
 let bothElemArr = document.querySelectorAll(".icon-container");
-
+let heading = document.querySelector(".heading");
 let crossBtn = bothElemArr[1];
 let plusButton = bothElemArr[0];
 let body = document.body;
@@ -38,8 +40,15 @@ for(let i=0; i<colorBtn.length; i++){
     }
     })
 }
+heading.addEventListener("click", function(){
+    let taskContainer = document.querySelectorAll(".task_container");
+    for (let i = 0; i < taskContainer.length; i++) {
+        taskContainer[i].style.display = "block";
+    }
+})
 plusButton.addEventListener("click", createModal);
 crossBtn.addEventListener("click", setDeleteState);
+
 
 function createModal() {
     // create modal

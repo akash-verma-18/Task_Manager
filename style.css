@@ -8,14 +8,14 @@ body{
 
 }
 
+
 .toolbar{
     height: 12vh;
     background-color: #2d3436;
     display: flex;
     align-items: center;
     padding-left: 5rem;
-    flex-wrap: wrap;
-    -ms-flex-direction: row;
+    flex-wrap: wrap; /* inside this, all elements will come in a straight line*/
 }
 .filter-container{
     height: 60%;
@@ -36,6 +36,7 @@ body{
     justify-content: center;
     align-items: center;
 }
+
 
 .filter_color{
     height: 40%;
@@ -63,6 +64,7 @@ background-color: green;
     border-radius: 0.2rem;
     display: flex;
     border-radius: 0.2rem solid;
+
 }
 .icon-container{
     width:50%;
@@ -85,13 +87,13 @@ background-color: green;
     color: white;
     font-weight: bold;
     font-size: 2rem;
-    position:fixed;
-    right: 10rem;
     text-decoration: underline;
+    position: fixed;
+    right: 5rem;
 }
 /* modal css */
 .modal_container{
-    position: absolute;
+position: absolute;
 height:18rem;
 width:36rem;
 background-color: brown;
@@ -153,6 +155,8 @@ padding: 1.7rem 1.2rem;
     height: 10rem;
     width:16rem;
     background-color: #fff;
+    margin-bottom: 1rem;
+    margin-right: 0.5rem;
 }
 .task_desc_container{
     height: 80%;
@@ -181,4 +185,58 @@ padding: 1.7rem 1.2rem;
 }
 .fa-lock-open{
     font-size: 1rem;
+}
+
+/***************************************************
+/* RESPONSIVE */
+
+@media only screen and (max-width: 825px) {
+    .toolbar{
+        padding-left: 2rem;
+    }
+        
+    .filter-container{
+        width: 10rem;
+        margin-right: 2rem;
+    }
+    
+    .action-container{
+        width: 7rem;
+    }
+    
+    .fas{
+        font-size: 1.5rem;
+    }
+    
+    .heading{
+        position: fixed;
+        right: 1.5rem;
+        font-size:1.5rem;
+    }
+    
+    }
+@media only screen and (max-width: 600px) {
+.toolbar{
+    padding-left: 1rem;
+}
+    
+.filter-container{
+    width: 8rem;
+    margin-right: 1rem;
+}
+
+.action-container{
+    width: 5rem;
+}
+
+.fas{
+    font-size: 1rem;
+}
+
+.heading{
+    position: fixed;
+    right: 1rem;
+    font-size:1rem
+}
+
 }
