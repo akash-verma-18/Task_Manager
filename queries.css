@@ -1,0 +1,170 @@
+
+@media only screen and (max-width: 1070px) {
+    .toolbar{
+        padding-left: 3.5rem;
+    }
+        
+    .filter-container{
+        width: 14rem;
+        margin-right: 3.5rem;
+    }
+    
+    .action-container{
+        width: 8rem;
+        margin-right: 8rem;
+    }
+    .fas{
+        font-size: 1.5rem;
+    }
+    
+    .heading{
+        font-size:1.8rem;
+    }
+    .delete-container{
+        height: 2.5rem;
+        width: 2.5rem;
+        position: fixed;
+        right: 5rem;
+    }
+    .delete-all{
+        font-size: 1.7rem;
+    }
+    .info-container{
+        height: 2.5rem;
+        width: 2.5rem;
+        position: fixed;
+        right: 1rem;
+    }
+    .info{
+        font-size: 1.7rem;
+    }
+    
+    }
+
+    
+@media only screen and (max-width: 950px) {
+    .toolbar{
+        padding-left: 2rem;
+    }
+        
+    .filter-container{
+        width: 10rem;
+        margin-right: 2rem;
+    }
+    
+    .action-container{
+        width: 7rem;
+        margin-right: 7rem;
+    }
+    
+    .fas{
+        font-size: 1.5rem;
+    }
+    
+    .heading{
+        font-size:1.5rem;
+    }
+    .delete-container{
+        height: 2rem;
+        width: 2rem;
+        position: fixed;
+        right: 6rem;
+    }
+    .delete-all{
+        font-size: 1.3rem;
+    }
+    .info-container{
+        height: 2rem;
+        width: 2rem;
+        position: fixed;
+        right: 1rem;
+    }
+    .info{
+        font-size: 1.3rem;
+    }
+    
+    }
+@media only screen and (max-width: 775px) {
+.toolbar{
+    padding-left: 1.5rem;
+}
+    
+.filter-container{
+    width: 9.5rem;
+    margin-right: 1.5rem;
+}
+
+.action-container{
+    width: 5rem;
+    margin-right: 4rem;
+}
+
+.fas{
+    font-size: 1rem;
+}
+
+.heading{
+    font-size:1.4rem
+}
+.delete-container{
+    height: 2rem;
+    width: 2rem;
+    position: fixed;
+    right: 4rem;
+}
+.delete-all{
+    font-size: 1rem;
+}
+.info-container{
+    height: 2rem;
+    width: 2rem;
+    position: fixed;
+    right: 1rem;
+}
+.info{
+    font-size: 1rem;
+}
+
+}
+@media only screen and (max-width: 630px) {
+    .toolbar{
+        padding-left: 1.2rem;
+    }
+        
+    .filter-container{
+        width: 7rem;
+        margin-right: 1.2rem;
+    }
+    
+    .action-container{
+        width: 4rem;
+        margin-right: 3rem;
+    }
+    
+    .fas{
+        font-size: 1rem;
+    }
+    
+    .heading{
+        font-size:1.2rem
+    }
+    .delete-container{
+        height: 1.5rem;
+        width: 1.5rem;
+        position: fixed;
+        right: 3rem;
+    }
+    .delete-all{
+        font-size: 1rem;
+    }
+    .info-container{
+        height: 1.5rem;
+        width: 1.5rem;
+        position: fixed;
+        right: 1rem;
+    }
+    .info{
+        font-size: 1rem;
+    }
+    
+    }

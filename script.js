@@ -5,6 +5,8 @@
 let mainContainer = document.querySelector(".main_container");
 let bothElemArr = document.querySelectorAll(".icon-container");
 let heading = document.querySelector(".heading");
+let deleteAll = document.querySelector(".delete-container");
+let info = document.querySelector(".info-container");
 let crossBtn = bothElemArr[1];
 let plusButton = bothElemArr[0];
 let body = document.body;
@@ -12,6 +14,7 @@ let deleteState = false; // to check the status of delete option
 let taskArr = [];
 let displayTask = [];
 let lockState = true;
+let showIf = false;
 
 if (localStorage.getItem("allTask")) { // to get the tasks we created before from localstorage.
     taskArr = JSON.parse(localStorage.getItem("allTask")); // if tasks are already present in localstorage then update the taskArr.
@@ -48,6 +51,8 @@ heading.addEventListener("click", function(){
 })
 plusButton.addEventListener("click", createModal);
 crossBtn.addEventListener("click", setDeleteState);
+deleteAll.addEventListener("click", deleteAllTasks);
+info.addEventListener("click", showInfo);
 
 
 function createModal() {
@@ -207,4 +212,50 @@ function editTask(e) { // whatever we edit in the textarea after creating task, 
             break;
         }
     }
+}
+function deleteAllTasks(){
+    let taskContainer = document.querySelectorAll(".task_container");
+    for (let i = 0; i < taskContainer.length; i++) {
+        taskContainer[i].style.display = "none";
+    }
+    window.localStorage.clear();
+}
+function showInfo(){
+    showIf = !showIf;
+    if(showIf == true){
+    let information = document.createElement("div");
+    information.setAttribute("class", "info-box");
+    information.innerHTML = `<dl>
+    <dt class="action"> 1. Add Task</dt>
+    <dd class="steps">- Click on plus icon.</dd>
+    <dd class="steps">- Choose a color.</dd>
+    <dd class="steps">- Type your task.</dd>
+    <dd class="steps">- Press Enter.</dd>
+</dl>
+<dl>
+    <dt class="action"> 2. Delete Task</dt>
+    <dd class="steps">- Click on minus icon.</dd>
+    <dd class="steps">- Select task(s) you want to delete.</dd>
+    <dd class="steps">- Again click on minus icon.</dd>
+</dl>
+<dl>
+    <dt class="action"> 3. Display Same Color Tasks</dt>
+    <dd class="steps">- Choose a color from top left corner.</dd>
+</dl>
+<dl>
+    <dt class="action"> 4. Delete All Tasks</dt>
+    <dd class="steps">- Click on delete icon.</dd>
+</dl>
+<dl>
+    <dt class="action"> 5. Show All Tasks</dt>
+    <dd class="steps">- Click on TASK MANAGER.</dd>
+    <dd class="steps">- Refresh the WebPage.</dd>
+</dl>
+    </div>`;
+        body.appendChild(information);
+    }else{
+        let infoBox = document.querySelector(".info-box");
+        infoBox.remove();
+    }
+    
 }
