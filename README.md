@@ -22,5 +22,7 @@ It contains following containers:
     It helps to delete all tasks.
 
 ## Screenshots
-
+![](screenshots/1.png)
+![](screenshots/2.png)
+![](screenshots/3.png)
 
