@@ -36,6 +36,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+.filter:hover{
+    cursor: pointer;
+}
 
 
 .filter_color{
@@ -89,6 +92,9 @@ background-color: green;
     font-size: 2rem;
     text-decoration: underline;
 }
+.heading:hover{
+    cursor: pointer;
+}
 
 .delete-container{
     display: flex;
@@ -99,6 +105,9 @@ background-color: green;
     position: fixed;
     right: 6rem;
     background-color: #6d7c7e;
+}
+.delete-container:hover{
+    cursor: pointer;
 }
 .delete-all{
     font-size: 1.7rem;
@@ -113,6 +122,9 @@ background-color: green;
     position: fixed;
     right: 1rem;
     background-color: #6d7c7e;
+}
+.info-container:hover{
+    cursor: pointer;
 }
 .info{
     font-size: 1.7rem;
